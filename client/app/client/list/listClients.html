@@ -1,0 +1,90 @@
+<!-- <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Clients</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Create</a></li>
+      <li><a href="#">Read</a></li>
+      <li><a href="#">Update</a></li>
+      <li><a href="#">Delete</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <h2>Enter the client's data</h2>
+  <form method="post">
+    <div class="form-group" >
+      <label>Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Enter Name"
+        ng-model="$ctrl.client.name"
+      >
+    </div>
+    <div class="form-group">
+      <label>Last Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastName"
+        placeholder="Enter Last Name"
+        ng-model="$ctrl.client.lastName"
+      >
+    </div>
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phoneNumber"
+        placeholder="Enter Phone Number"
+        ng-model="$ctrl.client.phoneNumber"
+      >
+    </div>
+    <button class="btn btn-success" ng-click="$ctrl.createClient()">Submit</button>
+  </form>
+</div>-->
+
+<div class="container">
+  <h2>Registered Clients</h2>
+  <a
+    class="btn btn-success"
+    style="float:right"
+    ui-sref="clients:new">New Client</a>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Lastname</th>
+      <th>Phone Number</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="client in $ctrl.listClients">
+      <td>{{client.name}}</td>
+      <td>{{client.lastName}}</td>
+      <td>{{client.phoneNumber}}</td>
+      <td>
+        <a
+          class="glyphicon glyphicon-trash text-danger"
+          href="#"
+          title="Delete"
+        >
+        </a>
+        <a
+          class="glyphicon glyphicon-pencil text-success"
+          href="/clients/{{client._id}}"
+          title="Update"
+        >
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<br><br>
