@@ -1,14 +1,11 @@
 import angular from 'angular';
+import DeleteModalController from './deleteModal.controller'
 
 class ListClientController {
   /*@ngInject*/
-  constructor($http) {
+  constructor($http,$uibModal) {
     this.$http = $http;
-    this.newClient = {
-      name: '',
-      lastName:'',
-      phoneNumber:''
-    };
+    this.$uibModal = $uibModal;
     this.listClients=[];
   }
 
@@ -19,21 +16,13 @@ class ListClientController {
       });
   }
 
-  destroyClient(){
-    alert("You're about to delete this client");
+  deleteClient(clientId){
+    this.$uibModal.open({
+      template: require('./deleteModal.html'),
+      controller: DeleteModalController,
+    })
   }
 
-  changeClient(){
-    alert("You're about to update this client");
-  }
-
-  createClient(){
-    this.$http.post('/api/clients',this.newClient)
-      .then((res) => {
-        alert(JSON.stringify(res))
-      })
-
-  }
 
 }//FIN DE LA CLASE CLIENTCONTROLLER
 
